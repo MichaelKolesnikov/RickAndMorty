@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.kotlin.compose)
 }
 
 android {
@@ -53,7 +54,6 @@ dependencies {
     implementation(libs.coil.compose)
 
     implementation(project(path=":domain"))
-    implementation(project(path=":common"))
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

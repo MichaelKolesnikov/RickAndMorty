@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.ui.CharacterActivity"
+            android:name="ru.mephi.rickandmorty.presentation.ui.CharacterActivity"
             android:exported="false" />
     </application>
 
