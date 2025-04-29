@@ -2,19 +2,19 @@
 
 Android приложение, отображающее список персонажей из Rick and Morty API. 
 
-## Стек технологий
+## Tech Stack
+- **Jetpack Compose**
+- **Koin** — DI
+- **Room** — local database
+- **Ktor Client**
+- **Kotlinx.serialization**
+- **Coil** — для загрузки изображений
+- **ViewModel + StateFlow** 
 
-- **Jetpack Compose** — UI
-- **Koin** — внедрение зависимостей (DI)
-- **Room** — локальное хранилище
-- **Ktor Client** — сетевые запросы
-- **Kotlinx.serialization** — сериализация JSON
-- **Coil** — загрузка изображений
-- **ViewModel + StateFlow** — управление состоянием
+## Clean Architecture & MVVM
+app -> presentation
+presentation -> domain
+data -> domain
+data -> common
 
-## Функциональность
-
-- Загрузка и отображение списка персонажей
-- Загрузка из сети или из Room при отсутствии интернета
-- Обработка состояний: загрузка, ошибка, контент
-- Кнопка обновления списка
+Колесников Михаил Леонидович
