@@ -1,5 +1,7 @@
 # Rick and Morty Characters App
 
+Колесников Михаил Леонидович
+
 Android приложение, отображающее список персонажей из Rick and Morty API. 
 
 ## Tech Stack
@@ -19,4 +21,4 @@ Android приложение, отображающее список персон
 - data -> domain
 - data -> common
 
-Колесников Михаил Леонидович
+
