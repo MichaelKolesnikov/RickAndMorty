@@ -12,9 +12,11 @@ Android приложение, отображающее список персон
 - **ViewModel + StateFlow** 
 
 ## Clean Architecture & MVVM
-app -> presentation
-presentation -> domain
-data -> domain
-data -> common
+### Dependencies
+- app -> presentation
+- app -> data
+- presentation -> domain
+- data -> domain
+- data -> common
 
 Колесников Михаил Леонидович
