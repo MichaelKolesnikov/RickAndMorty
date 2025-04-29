@@ -1,10 +1,8 @@
 package ru.mephi.rickandmorty.domain.entity
 
-import android.net.Uri
-
 data class CharacterEntity (
     val name: String,
-    val image: Uri,
+    val image: String,
     val status: String,
     val species: String,
 )

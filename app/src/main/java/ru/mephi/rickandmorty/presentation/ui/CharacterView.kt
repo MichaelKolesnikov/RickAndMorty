@@ -13,6 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import coil.compose.AsyncImage
 import ru.mephi.rickandmorty.domain.entity.CharacterEntity
 
@@ -30,7 +31,7 @@ fun CharacterView(character: CharacterEntity) {
                 .padding(6.dp)
         ) {
             AsyncImage(
-                model = character.image,
+                model = character.image.toUri(),
                 contentDescription = "Картинка ${character.name}",
                 modifier = Modifier
                     .size(64.dp)
