@@ -1,6 +1,5 @@
-package ru.mephi.rickandmorty.ui.theme
+package ru.mephi.rickandmorty.presentation.ui.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
@@ -34,7 +33,7 @@ private val LightColorScheme = lightColorScheme(
 )
 
 @Composable
-fun RickAndMortyTheme(
+fun Kfd_test_project_1Theme(
     darkTheme: Boolean = isSystemInDarkTheme(),
     // Dynamic color is available on Android 12+
     dynamicColor: Boolean = true,

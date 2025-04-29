@@ -4,6 +4,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class CharacterListDTO(
-    val info: CharacterInfoDTO,
+    val info: CharacterListInfoDTO,
     val results: List<CharacterDTO>,
 )

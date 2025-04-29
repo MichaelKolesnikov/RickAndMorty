@@ -1,14 +1,16 @@
 package ru.mephi.rickandmorty.presentation.viewmodel
 
+import android.util.Log
+import androidx.lifecycle.ViewModel
+import ru.mephi.rickandmorty.domain.entity.CharacterEntity
+import ru.mephi.rickandmorty.domain.repository.IRickRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import ru.mephi.rickandmorty.domain.entity.CharacterEntity
-import ru.mephi.rickandmorty.domain.repository.IRichRepository
 
-class CharacterViewModel(
-    private val repository: IRichRepository,
-) {
+class CharacterViewModel (
+    private val repository: IRickRepository
+): ViewModel() {
     private val _characters = MutableStateFlow(emptyList<CharacterEntity>())
     val characters: StateFlow<List<CharacterEntity>> = _characters.asStateFlow()
 
@@ -26,6 +28,7 @@ class CharacterViewModel(
             _characters.value = charactersList
         } catch (e: Exception) {
             _isError.value = true
+            Log.d("net", "loadCharacters: ${e.message}")
         } finally {
             _isLoading.value = false
         }

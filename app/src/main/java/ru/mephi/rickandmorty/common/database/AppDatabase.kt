@@ -8,12 +8,8 @@ import ru.mephi.rickandmorty.data.service.CharacterDAO
 @Database(
     entities = [CharacterModel::class],
     version = 1,
-    exportSchema = false,
+    exportSchema = false
 )
-abstract class Database: RoomDatabase() {
+abstract class AppDatabase : RoomDatabase() {
     abstract fun characterDAO(): CharacterDAO
-
-    companion object {
-        const val DATABASE_NAME = "RickAndMortyDatabase.db"
-    }
 }

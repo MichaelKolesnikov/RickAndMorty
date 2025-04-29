@@ -2,7 +2,8 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    kotlin("kapt")
+    id("com.google.devtools.ksp") version "2.0.21-1.0.27"
+    kotlin("plugin.serialization")
 }
 
 android {
@@ -38,51 +39,53 @@ android {
     buildFeatures {
         compose = true
     }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.9.0"
+    }
+}
+
+// исключаем один из конфликтующих дублирующих модулей
+configurations.all {
+    exclude(group = "com.intellij", module = "annotations")
 }
 
 dependencies {
+    // Расширения Kotlin для базовых Android API.
     implementation(libs.androidx.core.ktx)
+    implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
     implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.androidx.ui)
     implementation(libs.androidx.ui.graphics)
     implementation(libs.androidx.ui.tooling.preview)
     implementation(libs.androidx.material3)
-
-    implementation(libs.ui)
-    implementation(libs.androidx.material)
-    implementation(libs.ui.tooling.preview)
-    implementation(libs.activity.compose)
-
-    // ViewModel & Lifecycle
-    implementation(libs.androidx.lifecycle.runtime.ktx)
-    implementation(libs.androidx.lifecycle.viewmodel.compose)
-
-
-    // Ktor (REST)
-    implementation(libs.ktor.client.core)
-    implementation(libs.ktor.client.okhttp)
-    implementation(libs.ktor.client.serialization)
-    implementation(libs.ktor.serialization.kotlinx.json)
-    implementation(libs.io.ktor.ktor.client.content.negotiation2)
-
-
-    // Room
-    implementation(libs.androidx.room.ktx)
-    //noinspection KaptUsageInsteadOfKsp
-    kapt(libs.androidx.room.compiler)
-
-    // Coil
-    implementation(libs.coil.kt.coil.compose)
-    implementation(libs.coil.network.okhttp)
-
-
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.ui.test.junit4)
-
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    // Koin
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidx.compose)
+//    implementation(libs.koin.androidx.viewmodel)
+
+    // Ktor
+    implementation(libs.ktor.client.core)
+    implementation(libs.ktor.client.okhttp)
+    implementation(libs.ktor.client.content.negotiation)
+    implementation(libs.ktor.client.serialization)
+    implementation(libs.ktor.serialization.kotlinx.json)
+
+    // Room
+    val roomVersion = "2.6.1"
+    implementation(libs.androidx.room.runtime.v261)
+    implementation(libs.androidx.room.ktx.v261)
+    ksp("androidx.room:room-compiler:$roomVersion")
+
+    // Coil
+    implementation(libs.coil.compose)
 }
