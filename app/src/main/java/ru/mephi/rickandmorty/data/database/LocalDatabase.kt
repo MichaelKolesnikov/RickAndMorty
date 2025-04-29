@@ -1,4 +1,4 @@
-package ru.mephi.rickandmorty.common.database
+package ru.mephi.rickandmorty.data.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
@@ -10,6 +10,6 @@ import ru.mephi.rickandmorty.data.service.CharacterDAO
     version = 1,
     exportSchema = false
 )
-abstract class AppDatabase : RoomDatabase() {
+abstract class LocalDatabase : RoomDatabase() {
     abstract fun characterDAO(): CharacterDAO
 }
